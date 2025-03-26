@@ -1,6 +1,6 @@
 # R1-VLM 
 
-- Codebase taken from [R1-V](https://github.com/Deep-Agent/R1-V)
+Codebase taken from [R1-V](https://github.com/Deep-Agent/R1-V)
 ## Setup
 
 ```bash
