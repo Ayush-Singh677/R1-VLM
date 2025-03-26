@@ -1,6 +1,4 @@
-# R1-V: Reinforcing Super Generalization Ability in Vision Language Models with Less Than $3
-
-![image](https://github.com/user-attachments/assets/c52a448f-d666-4ca6-958b-86267d56de0e) 
+# R1-VLM - Codebase taken from [R1-V](https://github.com/Deep-Agent/R1-V)
 
 <p align="center">
 <a href="https://github.com/Deep-Agent/R1-V/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/Deep-Agent/R1-V.svg"></a>
