@@ -1,8 +1,6 @@
-# R1-VLM - Codebase taken from [R1-V](https://github.com/Deep-Agent/R1-V)
+# R1-VLM 
 
-**Blogs:**
-[🎯 RLVR in Vision Language Models: Findings, Questions and Directions](https://deepagent.notion.site/rlvr-in-vlms)
-
+- Codebase taken from [R1-V](https://github.com/Deep-Agent/R1-V)
 ## Setup
 
 ```bash
