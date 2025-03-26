@@ -1,21 +1,6 @@
 # R1-VLM - Codebase taken from [R1-V](https://github.com/Deep-Agent/R1-V)
 
-<p align="center">
-<a href="https://github.com/Deep-Agent/R1-V/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/Deep-Agent/R1-V.svg"></a>
-</p>
-
-> ### Roadmap for R1-V
-> We are building a general framework for RLVR in VLM. We believe in the power of **trenches** and **longtermism**.
->
-> Our Interest: General Vision-Language Intelligence & Visual/GUI Agent
-> 
-> Our Goal: 🔄 Algorithm Enhancement ⚡ Efficiency Optimization 🎯 Task Diversity 🌲 Impactful Open Source Research. 
->
-> Welcome Ideas and Contribution. Stay tuned!
-
-
 **Blogs:**
-
 
 [🎯 RLVR in Vision Language Models: Findings, Questions and Directions](https://deepagent.notion.site/rlvr-in-vlms)
 
