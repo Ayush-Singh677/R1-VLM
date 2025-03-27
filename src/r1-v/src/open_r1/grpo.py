@@ -178,7 +178,7 @@ def main(script_args, training_args, model_args):
     peft_config = LoraConfig(
         r=16,
         lora_alpha=32,
-        target_modules=["q_proj", "k_proj", "v_proj"],
+        target_modules=["q_proj", "k_proj", "v_proj","o_proj","qkv","proj","fc1","fc2"],
         lora_dropout=0.05,
         bias="none",
         task_type="CAUSAL_LM",
