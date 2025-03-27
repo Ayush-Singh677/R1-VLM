@@ -24,7 +24,7 @@ from transformers import Qwen2VLForConditionalGeneration
 from math_verify import parse, verify
 from open_r1.trainer import Qwen2VLGRPOTrainer, Qwen2VLGRPOVLLMTrainer, Qwen2VLGRPOVLLMTrainerModified
 from trl import GRPOConfig, GRPOTrainer, ModelConfig, ScriptArguments, TrlParser, get_peft_config
-
+from peft import LoraConfig
 
 @dataclass
 class GRPOScriptArguments(ScriptArguments):
