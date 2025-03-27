@@ -19,7 +19,7 @@ from dataclasses import dataclass, field
 from typing import Optional
 
 from datasets import load_dataset, load_from_disk
-from transformers import Qwen2VLForConditionalGeneration
+from transformers import Qwen2VLForConditionalGeneration, BitsAndBytesConfig
 
 from math_verify import parse, verify
 from open_r1.trainer import Qwen2VLGRPOTrainer, Qwen2VLGRPOVLLMTrainer, Qwen2VLGRPOVLLMTrainerModified
@@ -175,6 +175,21 @@ def main(script_args, training_args, model_args):
     trainer_cls = Qwen2VLGRPOTrainer if not training_args.use_vllm else Qwen2VLGRPOVLLMTrainerModified
     print("using: ", trainer_cls)
 
+    bnb_config = BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_use_double_quant=True,
+        bnb_4bit_compute_dtype=torch.bfloat16
+    )
+
+    model = Qwen2VLForConditionalGeneration.from_pretrained(
+        model_args.model_name_or_path,
+        quantization_config=bnb_config,  # Add quantization config
+        device_map="auto",  # Automatic device placement
+        torch_dtype=torch.bfloat16,
+        attn_implementation=model_args.attn_implementation
+    )
+
     peft_config = LoraConfig(
         r=16,
         lora_alpha=32,
@@ -184,9 +199,8 @@ def main(script_args, training_args, model_args):
         task_type="CAUSAL_LM",
     )
     
-    # Initialize the GRPO trainer
     trainer = trainer_cls(
-        model=model_args.model_name_or_path,
+        model=model,
         reward_funcs=reward_funcs,
         args=training_args,
         train_dataset=dataset[script_args.dataset_train_split],
