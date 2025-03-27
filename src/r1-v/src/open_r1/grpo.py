@@ -175,6 +175,15 @@ def main(script_args, training_args, model_args):
     trainer_cls = Qwen2VLGRPOTrainer if not training_args.use_vllm else Qwen2VLGRPOVLLMTrainerModified
     print("using: ", trainer_cls)
 
+    peft_config = LoraConfig(
+        r=16,
+        lora_alpha=32,
+        target_modules=["q_proj", "k_proj", "v_proj"],
+        lora_dropout=0.05,
+        bias="none",
+        task_type="CAUSAL_LM",
+    )
+    
     # Initialize the GRPO trainer
     trainer = trainer_cls(
         model=model_args.model_name_or_path,
@@ -182,7 +191,7 @@ def main(script_args, training_args, model_args):
         args=training_args,
         train_dataset=dataset[script_args.dataset_train_split],
         eval_dataset=dataset[script_args.dataset_test_split] if training_args.eval_strategy != "no" else None,
-        peft_config=get_peft_config(model_args),
+        peft_config=peft_config,
         attn_implementation=model_args.attn_implementation,
         max_pixels=script_args.max_pixels,
         min_pixels=script_args.min_pixels,
