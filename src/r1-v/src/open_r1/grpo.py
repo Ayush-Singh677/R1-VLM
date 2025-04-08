@@ -179,15 +179,14 @@ def main(script_args, training_args, model_args):
         load_in_4bit=True,
         bnb_4bit_quant_type="nf4",
         bnb_4bit_use_double_quant=True,
-        bnb_4bit_compute_dtype=torch.bfloat16
+        bnb_4bit_compute_dtype=torch.float16
     )
 
     model = Qwen2VLForConditionalGeneration.from_pretrained(
         model_args.model_name_or_path,
         quantization_config=bnb_config,  # Add quantization config
-        # device_map="auto",  # Automatic device placement
+        device_map="cuda",  # Automatic device placement
         torch_dtype=torch.float16,
-        attn_implementation=model_args.attn_implementation
     )
 
     peft_config = LoraConfig(
