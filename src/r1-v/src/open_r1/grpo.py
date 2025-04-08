@@ -186,7 +186,7 @@ def main(script_args, training_args, model_args):
         model_args.model_name_or_path,
         quantization_config=bnb_config,  # Add quantization config
         # device_map="auto",  # Automatic device placement
-        torch_dtype=torch.bfloat16,
+        torch_dtype=torch.float16,
         attn_implementation=model_args.attn_implementation
     )
 
